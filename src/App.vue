@@ -9,8 +9,7 @@
 
 
    
-    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3"
-    v-if="typeof user.main === 'undefined'">
+    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3">
       <img class="rounded-full border-violet-400 border-4" :src="this.user.image">
       <div class="userName text-md pt-4 pb-4">{{ this.user.firstName }} {{ this.user.lastName }}</div>
 
