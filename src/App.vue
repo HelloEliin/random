@@ -2,40 +2,42 @@
   <main class="h-screen w-full flex items-center justify-center">
 
 
-    
 
 
-    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3 rounded-md" v-show="!isActive">
+
+    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3 rounded-md"
+      v-show="!isActive">
 
       <img class="h-24 w-24" src="@/assets/chatBubble.jpeg">
       <p class="text-2xl text-violet-400 font-extrabold p-4">Lets Explore</p>
 
-      <p class="w-1/2 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ipsam praesentium aliquid officiis!</p>
+      <p class="w-1/2 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ipsam praesentium
+        aliquid officiis!</p>
       <button class="startBtn bg-violet-400 text-white p-2 rounded-md" @click="toggle">Get started</button>
     </div>
 
 
-   
+
     <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-[80%] w-[80%] rounded-md" v-show="isActive">
-      <img class="rounded-full border-violet-400 border-4" :src="this.user.image">
-      <div class="userName text-lg pt-4 pb-2">{{ this.user.firstName }} {{ this.user.lastName  }} , {{ this.user.age}}</div>
-      
-      <div class="flex flex-row text-blue-800 space-x-2">
-        <font-awesome-icon :icon="['fas', 'location-dot']" />
-        <div class="userName text-sm pb-2 text-gray-400">
-        {{ this.user.state }}, {{ this.user.city  }}</div>
+      <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3">
+        <img class="rounded-full border-violet-400 border-4" :src="this.user.image">
+        <div class="userName text-lg pt-4 pb-2">{{ this.user.firstName }} {{ this.user.lastName }} , {{ this.user.age }}
+        </div>
+
+        <div class="flex flex-row text-blue-800 space-x-2">
+          <font-awesome-icon :icon="['fas', 'location-dot']" />
+          <div class="userName text-sm pb-2 text-gray-400">
+            {{ this.user.state }}, {{ this.user.city }}</div>
+        </div>
+
+
+        <p class="w-1/2">Lorem ipsum dolor sit amet consectetur. Dolorum earum soluta itaque sed aut.</p>
+        <font-icons></font-icons>
+        <button class="bg-violet-400 text-white p-2 rounded-md" @click="fetchUser">Get the next user</button>
+
+      </div>
       </div>
 
-      
-      
-      <p class="w-1/2">Lorem ipsum dolor sit amet consectetur. Dolorum earum soluta itaque sed aut.</p>
-
-      <font-icons></font-icons>
-
-      <button class="bg-violet-400 text-white p-2 rounded-md" @click="fetchUser">Get the next user</button>
-      
-    </div>
-   
 
   </main>
 </template>
@@ -56,7 +58,7 @@ export default {
   data() {
     return {
 
-      isActive:false,
+      isActive: false,
 
       user: {
         firstName: this.firstName,
@@ -69,8 +71,8 @@ export default {
   },
   methods: {
     fetchUser() {
-   
-        fetch('https://randomuser.me/api/')
+
+      fetch('https://randomuser.me/api/')
         .then((response) => response.json())
         .then((data) => this.getUser(data));
 
@@ -89,7 +91,7 @@ export default {
 
       return this.user;
     },
-    toggle(){
+    toggle() {
 
       this.isActive = !this.isActive;
       this.fetchUser();
@@ -103,5 +105,4 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 </style>
