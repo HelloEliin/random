@@ -12,12 +12,13 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 
 
 /* add icons to the library */
 
-library.add(faPhone, faEnvelope, faLocationDot, faHeart)
+library.add(faPhone, faEnvelope, faLocationDot, faHeart, faBriefcase)
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
