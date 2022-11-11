@@ -2,9 +2,6 @@
   <main class="h-screen w-full flex items-center justify-center">
 
 
-
-
-
     <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3 rounded-md"
       v-show="!isActive">
 
@@ -18,8 +15,8 @@
 
 
 
-    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-[80%] w-[80%] rounded-md" v-show="isActive">
-      <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3">
+    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-[80%] w-[80%] rounded-md"
+      v-show="isActive">
         <img class="rounded-full border-violet-400 border-4" :src="this.user.image">
         <div class="userName text-lg pt-4 pb-2">{{ this.user.firstName }} {{ this.user.lastName }} , {{ this.user.age }}
         </div>
@@ -36,11 +33,8 @@
         <button class="bg-violet-400 text-white p-2 rounded-md" @click="fetchUser">Get the next user</button>
 
       </div>
-      </div>
+  
 
-      <p>
-      Hejhejhej
-      </p>
 
 
   </main>
