@@ -1,9 +1,14 @@
 <template>
-  <main class="h-screen w-full flex items-center justify-center">
+
+<header-component @startGame="startGame"></header-component>
+
+  <main class="h-screen w-full flex items-center justify-center flex-wrap bg-white">
 
 
-    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-2/3 w-2/3 rounded-md"
-      v-show="!isActive">
+
+
+    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins w-[80%] shadow-lg h-2/3 rounded-md"
+        v-show="!isActive"> <!--!isActive-->
       <img class="h-24 w-24" src="@/assets/chatBubble.jpeg">
       <p class="text-2xl text-violet-400 font-extrabold p-4">Lets Explore</p>
       <p class="w-1/2 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ipsam praesentium
@@ -13,29 +18,30 @@
 
 
 
-    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-[80%] w-[80%] rounded-md"
+
+    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-[80%] w-full rounded-md"
       v-show="isActive">
       <img class="rounded-full border-violet-400 border-4" :src="this.user.image">
       <div class="userName text-lg pt-4 pb-2">{{ this.user.firstName }} {{ this.user.lastName }} , {{ this.user.age }}
       </div>
 
 
-      
-  
-        <div class="flex flex-row text-blue-800 space-x-2">
-          <font-awesome-icon :icon="['fas', 'location-dot']" />
-          <div class="userName text-sm pb-2 text-gray-400">
-            {{ this.user.state }}, {{ this.user.city }}
-          </div>
-        </div>
 
-        <div class="flex flex-row text-blue-800 space-x-2">
-            <font-awesome-icon :icon="['fas', 'briefcase']" />
-            <p class="text-sm pb-2 text-gray-400">Nurse at Hamptons Hospital</p>
-          </div>
-      
-       
-    
+
+      <div class="flex flex-row text-blue-800 space-x-2">
+        <font-awesome-icon :icon="['fas', 'location-dot']" />
+        <div class="userName text-sm pb-2 text-gray-400">
+          {{ this.user.state }}, {{ this.user.city }}
+        </div>
+      </div>
+
+      <div class="flex flex-row text-blue-800 space-x-2">
+        <font-awesome-icon :icon="['fas', 'briefcase']" />
+        <p class="text-sm pb-2 text-gray-400">Nurse at Hamptons Hospital</p>
+      </div>
+
+
+
 
 
 
@@ -54,21 +60,31 @@
 <script>
 
 import '@/assets/tailwind.css'
+import 'tw-elements'
 
 import FontIcons from '@/components/FontIcons.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue'
+
+
+
+
 
 
 
 export default {
   name: 'App',
   components: {
-    FontIcons
+    FontIcons,
+    HeaderComponent,
   },
   data() {
     return {
 
       isActive: false,
       isLiked: false,
+      isStarting: false,
+      isShowing: false,
+    
 
       user: {
         firstName: this.firstName,
@@ -98,6 +114,7 @@ export default {
       this.user.age = results.results[0].dob.age;
       this.user.state = results.results[0].location.state;
       this.user.city = results.results[0].location.city;
+      this.isLiked = false;
 
       return this.user;
     },
@@ -111,7 +128,16 @@ export default {
 
       this.isLiked = !this.isLiked;
 
-    }
+    },
+
+    startGame() {
+
+      this.isActive = false;
+      console.log('hej')
+    
+
+    },
+  
 
   },
 
