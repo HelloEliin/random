@@ -2,30 +2,39 @@
 
 
   <nav
-    class="flex items-center flex-end bg-gradient-to-r from-pink-400 to-orange-300 shadow-md text-sm border-violet-400 w-full font-extrabold align-center">
-    <div class="flex items-center text-white h-32 w-full space-x-16">
-      <span class="font-semibold font-poppins text-5xl pl-10">Tinder</span>
+    class="flex items-center font-poppins bg-gradient-to-b from-violet-200 to-gray-100 flex-end text-sm w-full font-extrabold align-center">
+    <div class="flex items-center text-blue-800 h-32 w-full space-x-10">
+      <span class="text-lg pr-28 pl-10 flex flex-row align-center"> 
+      
+    Tinderlina</span>
+
 
       <button
-        class="text-white py-2.5 px-2.5 border rounded  border-white hover:text-teal-500 hover:bg-white">
-        News
-    </button>
-
-      <button
-        class="text-white py-2.5 px-2.5 border rounded  border-white hover:text-teal-500 hover:bg-white">
-        About
-  </button>
-
-      <button
-      class="py-2.5 px-2.5 border rounded text-white border-white hover:text-teal-500 hover:bg-white" @click="toggleGetUser">
+      class="py-2 px-2 text-xs hover:text-violet-400 hover:underline" @click="toggleGetUser">
         Get random user
     </button>
 
 
-      <div class="pl-24 pr-4">
+      <button
+        class="text-blue-800 text-xs py-2.5 px-2.5 hover:text-violet-400 hover:underline" @click="getNews">
+        News
+    </button>
+
+      <button
+        class="text-blue-800 text-xs py-2.5 px-2.5 hover:text-violet-400 hover:underline">
+        About
+  </button>
+
+  <button
+        class="text-blue-800 text-xs py-2.5 px-2.5 hover:text-violet-400 hover:underline">
+        Contact us
+  </button>
+
+
+      <div class="pl-6 pr-4">
         <button class="w-20 h-20
           dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="border-4 rounded-full border-white" src="@/assets/woman.jpg">
+          <img class="border-4 rounded-full border-violet-400" src="@/assets/woman.jpg">
         </button>
 
        
@@ -121,6 +130,7 @@ export default {
     return {
 
       isLiked: this.isLiked,
+      isGetNews: false,
       
     }
 
@@ -128,7 +138,11 @@ export default {
  methods:{
   toggleGetUser(){
     this.$emit('startGame');
-  }
+  },
+  getNews(){
+
+    this.$emit('getNews')
+  },
  }
 
 }

@@ -1,16 +1,16 @@
 <template>
 
-<header-component @startGame="startGame"></header-component>
+<header-component v-show="isStarting" @startGame="startGame" @getNews="getNews"></header-component>
+<start-view-component @showInside="showInside"></start-view-component>
 
-  <main class="h-screen w-full flex items-center justify-center flex-wrap bg-white">
+  <main class="h-screen w-full bg-white flex items-center justify-center">
 
+ 
 
-
-
-    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins w-[80%] shadow-lg h-2/3 rounded-md"
-        v-show="!isActive"> <!--!isActive-->
+    <div class="flex justify-center items-center pt-10 pb-10 flex-col font-poppins w-[80%] shadow-lg h-2/3 rounded-md bg-white"
+        v-show="isActive"> <!--!isActive-->
       <img class="h-24 w-24" src="@/assets/chatBubble.jpeg">
-      <p class="text-2xl text-violet-400 font-extrabold p-4">Lets Explore</p>
+      <p class="text-2xl text-blue-800 p-4">Lets Explore</p>
       <p class="w-1/2 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ipsam praesentium
         aliquid officiis!</p>
       <button class="startBtn bg-violet-400 text-white p-2 rounded-md" @click="toggle">Get started</button>
@@ -20,8 +20,8 @@
 
 
     <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-[80%] w-full rounded-md"
-      v-show="isActive">
-      <img class="rounded-full border-violet-400 border-4" :src="this.user.image">
+      v-show="isGetUser">
+      <img class="rounded-full" :src="this.user.image">
       <div class="userName text-lg pt-4 pb-2">{{ this.user.firstName }} {{ this.user.lastName }} , {{ this.user.age }}
       </div>
 
@@ -64,7 +64,7 @@ import 'tw-elements'
 
 import FontIcons from '@/components/FontIcons.vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
-
+import StartViewComponent from '@/components/StartViewComponent.vue'
 
 
 
@@ -76,6 +76,7 @@ export default {
   components: {
     FontIcons,
     HeaderComponent,
+    StartViewComponent,
   },
   data() {
     return {
@@ -84,6 +85,10 @@ export default {
       isLiked: false,
       isStarting: false,
       isShowing: false,
+      isGetNews: false,
+      isGetUser: false,
+    
+      
     
 
       user: {
@@ -121,6 +126,7 @@ export default {
     toggle() {
 
       this.isActive = !this.isActive;
+      this.isGetUser =!this.isGetUser;
       this.fetchUser();
     },
 
@@ -132,12 +138,26 @@ export default {
 
     startGame() {
 
-      this.isActive = false;
+      this.isActive = true;
+      this.isGetUser = false;
       console.log('hej')
     
 
     },
-  
+
+    toggleIsGetNews(){
+    
+      this.isGetNews = true;
+      
+    },
+
+    showInside(){
+
+      this.isActive = true;
+      this.isStarting = true;
+
+
+    },
 
   },
 
