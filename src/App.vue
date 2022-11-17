@@ -1,11 +1,12 @@
 <template>
 
 <header-component v-show="isStarting" @startGame="startGame" @getNews="getNews"></header-component>
-<start-view-component @showInside="showInside"></start-view-component>
+<start-view-component v-show="!isInside" @showInside="showInside"></start-view-component>
+<front-page-header v-show="!isInside" @signIn="showInside"></front-page-header>
 
   <main class="h-screen w-full bg-white flex items-center justify-center">
 
- 
+
 
     <div class="flex justify-center items-center pt-10 pb-10 flex-col font-poppins w-[80%] shadow-lg h-2/3 rounded-md bg-white"
         v-show="isActive"> <!--!isActive-->
@@ -65,6 +66,7 @@ import 'tw-elements'
 import FontIcons from '@/components/FontIcons.vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import StartViewComponent from '@/components/StartViewComponent.vue'
+import FrontPageHeader from '@/components/FrontPageHeader.vue'
 
 
 
@@ -77,6 +79,7 @@ export default {
     FontIcons,
     HeaderComponent,
     StartViewComponent,
+    FrontPageHeader,
   },
   data() {
     return {
@@ -87,6 +90,7 @@ export default {
       isShowing: false,
       isGetNews: false,
       isGetUser: false,
+      isInside: false,
     
       
     
@@ -155,6 +159,7 @@ export default {
 
       this.isActive = true;
       this.isStarting = true;
+      this.isInside = true;
 
 
     },

@@ -6,7 +6,7 @@
     <div class="flex items-center text-blue-800 h-32 w-full space-x-10">
       <span class="text-lg pr-28 pl-10 flex flex-row align-center"> 
       
-    Tinderlina</span>
+    LoremForReal</span>
 
 
       <button
