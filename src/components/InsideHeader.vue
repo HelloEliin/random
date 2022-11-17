@@ -41,6 +41,7 @@
           <ul class="
           dropdown-menu
           rounded
+          shadow-lg
           hidden
           text-gray-700
           bg-white" aria-labelledby="dropdownMenuButton1">
@@ -95,7 +96,7 @@
           </li>
 
 
-          <li class="pl-2 pt-2">
+          <li class="pl-2 pt-2 pb-2">
             <font-awesome-icon :icon="['fas', 'arrow-right-from-bracket']" />
             <a class="
               dropdown-item

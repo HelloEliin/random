@@ -1,7 +1,7 @@
 <template>
 
-<header-component v-show="isStarting" @startGame="startGame" @getNews="getNews"></header-component>
-<start-view-component v-show="!isInside" @showInside="showInside"></start-view-component>
+<inside-header v-show="isStarting" @startGame="startGame" @getNews="getNews"></inside-header>
+<front-page v-show="!isInside" @showInside="showInside"></front-page>
 <front-page-header v-show="!isInside" @signIn="showInside"></front-page-header>
 
   <main class="h-screen w-full bg-white flex items-center justify-center">
@@ -11,7 +11,7 @@
     <div class="flex justify-center items-center pt-10 pb-10 flex-col font-poppins w-[80%] shadow-lg h-2/3 rounded-md bg-white"
         v-show="isActive"> <!--!isActive-->
       <img class="h-24 w-24" src="@/assets/chatBubble.jpeg">
-      <p class="text-2xl text-blue-800 p-4">Lets Explore</p>
+      <p class="text-3xl text-blue-800 p-4">Lets Explore</p>
       <p class="w-1/2 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ipsam praesentium
         aliquid officiis!</p>
       <button class="startBtn bg-violet-400 text-white p-2 rounded-md" @click="toggle">Get started</button>
@@ -64,9 +64,10 @@ import '@/assets/tailwind.css'
 import 'tw-elements'
 
 import FontIcons from '@/components/FontIcons.vue'
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import StartViewComponent from '@/components/StartViewComponent.vue'
+import InsideHeader from '@/components/InsideHeader.vue'
+import FrontPage from '@/components/FrontPage.vue'
 import FrontPageHeader from '@/components/FrontPageHeader.vue'
+
 
 
 
@@ -77,9 +78,9 @@ export default {
   name: 'App',
   components: {
     FontIcons,
-    HeaderComponent,
-    StartViewComponent,
     FrontPageHeader,
+    InsideHeader,
+    FrontPage,
   },
   data() {
     return {
