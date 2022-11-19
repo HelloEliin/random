@@ -13,6 +13,13 @@
             <img class="h-[60%] w-[60%]" src="@/assets/pict.png">
         </div>
 
+        <div class="text-xs absolute z-10 pt-500 font-poppins text-blue-800 pl-620">
+            <div class="shadow-md rounded-full w-full pt-2 pb-2 pl-6 pr-6"><font-awesome-icon class="pr-2" :icon="['fas', 'users']" />
+            1.5M+ Users worldwide<br>
+            <font-awesome-icon class="pr-2 pt-2" :icon="['fas', 'heart-pulse']" /> 15.000 matches everyday<br>
+        </div>
+    </div>
+
 
     </div>
 

@@ -5,7 +5,12 @@ module.exports = {
     extend: {
       fontFamily:{
         'poppins':"'Poppins', sans-serif;",
+      },
+      padding: {
+        '620': '620px',
+        '500': '500px',
       }
+
     },
   },
   plugins: [

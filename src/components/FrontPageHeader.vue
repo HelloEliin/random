@@ -31,9 +31,11 @@ export default {
   methods: {
         signIn() {
             this.$emit('signIn');
-            console.log('hej');
             this.isStarting = false;
-        }
+            
+            this.$emit('fetchRandom');
+            console.log('work');
+        },
     },
   }
 

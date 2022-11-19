@@ -1,15 +1,19 @@
 <template>
 
-<inside-header v-show="isStarting" @startGame="startGame" @getNews="getNews"></inside-header>
-<front-page v-show="!isInside" @showInside="showInside"></front-page>
-<front-page-header v-show="!isInside" @signIn="showInside"></front-page-header>
+  <inside-header v-show="isStarting" @startGame="startGame"></inside-header>
+  <front-page v-show="!isInside" @showInside="showInside"></front-page>
+  <front-page-header v-show="!isInside" @signIn="showInside" @click="fetchUser"></front-page-header>
+
+
 
   <main class="h-screen w-full bg-white flex items-center justify-center">
 
 
 
-    <div class="flex justify-center items-center pt-10 pb-10 flex-col font-poppins w-[80%] shadow-lg h-2/3 rounded-md bg-white"
-        v-show="isActive"> <!--!isActive-->
+    <div
+      class="flex justify-center items-center pt-10 pb-10 flex-col font-poppins w-[80%] shadow-lg h-2/3 rounded-md bg-white"
+      v-show="isActive">
+      <!--!isActive-->
       <img class="h-24 w-24" src="@/assets/chatBubble.jpeg">
       <p class="text-3xl text-blue-800 p-4">Lets Explore</p>
       <p class="w-1/2 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ipsam praesentium
@@ -17,17 +21,18 @@
       <button class="startBtn bg-violet-400 text-white p-2 rounded-md" @click="toggle">Get started</button>
     </div>
 
-
-
-
-    <div class="flex items-center justify-center pt-10 pb-10 flex-col font-poppins shadow-lg h-[80%] w-full rounded-md"
+    <div class="flex items-center justify-center pb-10 flex-col font-poppins shadow-lg w-full rounded-md"
       v-show="isGetUser">
+
+      <div class="flex flex-row pb-20">
+        <div v-for="user in randomUser" :key="user.image">
+          <img class="rounded-full" :src="user">
+        </div></div>
+
+
       <img class="rounded-full" :src="this.user.image">
       <div class="userName text-lg pt-4 pb-2">{{ this.user.firstName }} {{ this.user.lastName }} , {{ this.user.age }}
       </div>
-
-
-
 
       <div class="flex flex-row text-blue-800 space-x-2">
         <font-awesome-icon :icon="['fas', 'location-dot']" />
@@ -40,12 +45,6 @@
         <font-awesome-icon :icon="['fas', 'briefcase']" />
         <p class="text-sm pb-2 text-gray-400">Nurse at Hamptons Hospital</p>
       </div>
-
-
-
-
-
-
 
 
       <p class="w-1/2">Lorem ipsum dolor sit amet consectetur. Dolorum earum soluta itaque sed aut.</p>
@@ -70,10 +69,6 @@ import FrontPageHeader from '@/components/FrontPageHeader.vue'
 
 
 
-
-
-
-
 export default {
   name: 'App',
   components: {
@@ -92,9 +87,7 @@ export default {
       isGetNews: false,
       isGetUser: false,
       isInside: false,
-    
-      
-    
+      count: 0,
 
       user: {
         firstName: this.firstName,
@@ -103,6 +96,7 @@ export default {
         phone: this.phone,
       },
 
+      randomUser: [],
     }
   },
   methods: {
@@ -110,8 +104,7 @@ export default {
 
       fetch('https://randomuser.me/api/')
         .then((response) => response.json())
-        .then((data) => this.getUser(data));
-
+        .then((data) => this.getUser(data))
     },
 
     getUser(results) {
@@ -126,13 +119,24 @@ export default {
       this.user.city = results.results[0].location.city;
       this.isLiked = false;
 
+      if(this.count <= 13)
+      {
+        this.randomUser.push(this.user.image)
+        this.fetchUser();
+        this.count++
+
+      }
+
       return this.user;
     },
+
     toggle() {
 
-      this.isActive = !this.isActive;
-      this.isGetUser =!this.isGetUser;
       this.fetchUser();
+      this.isActive = !this.isActive;
+      this.isGetUser = !this.isGetUser;
+
+
     },
 
     toggleIsLiked() {
@@ -143,20 +147,21 @@ export default {
 
     startGame() {
 
+      this.randomUser = [];
+      this.count = 0;
       this.isActive = true;
       this.isGetUser = false;
-      console.log('hej')
-    
-
-    },
-
-    toggleIsGetNews(){
-    
-      this.isGetNews = true;
       
+
     },
 
-    showInside(){
+    toggleIsGetNews() {
+
+      this.isGetNews = true;
+
+    },
+
+    showInside() {
 
       this.isActive = true;
       this.isStarting = true;

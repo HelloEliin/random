@@ -4,9 +4,12 @@
   <nav
     class="flex items-center font-poppins bg-gradient-to-b from-violet-200 to-gray-100 flex-end text-sm w-full font-extrabold align-center">
     <div class="flex items-center text-blue-800 h-32 w-full space-x-10">
+      
       <span class="text-lg pr-28 pl-10 flex flex-row align-center"> 
       
     LoremForReal</span>
+
+    <!-- <img class="h-24 w-24" src="@/assets/logga.png"> -->
 
 
       <button
@@ -16,7 +19,7 @@
 
 
       <button
-        class="text-blue-800 text-xs py-2.5 px-2.5 hover:text-violet-400 hover:underline" @click="getNews">
+        class="text-blue-800 text-xs py-2.5 px-2.5 hover:text-violet-400 hover:underline">
         News
     </button>
 
@@ -138,12 +141,9 @@ export default {
   },
  methods:{
   toggleGetUser(){
-    this.$emit('startGame');
+   this.$emit('startGame');
   },
-  getNews(){
 
-    this.$emit('getNews')
-  },
  }
 
 }
